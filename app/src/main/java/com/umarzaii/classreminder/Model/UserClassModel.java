@@ -19,6 +19,10 @@ public class UserClassModel {
         this.userClassID = userClassID;
     }
 
+    public String getUserClassID() {
+        return userClassID;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -26,5 +30,4 @@ public class UserClassModel {
 
         return result;
     }
-
 }

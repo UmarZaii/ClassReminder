@@ -37,7 +37,7 @@ public class MainFragment extends Fragment {
         databaseHandler = new DatabaseHandler();
         fragmentHandler = new FragmentHandler(getActivity().getSupportFragmentManager());
 
-        btnGoToAddClassLocation = (Button)v.findViewById(R.id.btnGoToAddClassLocation);
+        btnGoToAddClassLocation = (Button)v.findViewById(R.id.btnGoToClassLocation);
         btnGoToAddSubject = (Button)v.findViewById(R.id.btnGoToAddSubject);
         btnGoToUserClass = (Button)v.findViewById(R.id.btnGoToUserClass);
         btnMyQRCode = (Button)v.findViewById(R.id.btnMyQRCode);
@@ -46,7 +46,7 @@ public class MainFragment extends Fragment {
         btnGoToAddClassLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new AddClassLocationFragment(),"AddClassLocation");
+                fragmentHandler.stackFragment(new ClassLocationFragment(),"ClassLocation");
             }
         });
 

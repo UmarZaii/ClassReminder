@@ -9,14 +9,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AddSubject"
-        android:layout_above="@+id/btnGoToAddClassLocation"
+        android:layout_above="@+id/btnGoToClassLocation"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/btnGoToAddClassLocation"
+        android:id="@+id/btnGoToClassLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AddClassLocation"
+        android:text="ClassLocation"
         android:layout_above="@+id/btnGoToUserClass"
         android:layout_centerHorizontal="true" />
 

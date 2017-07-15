@@ -19,6 +19,10 @@ public class ClassLocationModel {
         this.classLocationID = classLocationID;
     }
 
+    public String getClassLocationID() {
+        return classLocationID;
+    }
+
     @Exclude
     public Map<String, Object> detailsToMap() {
         HashMap<String, Object> result = new HashMap<>();
