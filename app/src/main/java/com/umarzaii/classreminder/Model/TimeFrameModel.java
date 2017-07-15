@@ -92,11 +92,11 @@ public class TimeFrameModel {
 
     //TimeFrame Flaws
     @Exclude
-    private Map<String, Object> userClassInitDetails(String timeGap, String timeID, String classLocation, String subjectID) {
+    private Map<String, Object> userClassInitDetails(String timeGap, String timeID, String classLocationID, String subjectID) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("timeGap", timeGap);
         result.put("timeID", timeID);
-        result.put("classLocation", classLocation);
+        result.put("classLocationID", classLocationID);
         result.put("subjectID", subjectID);
 
         return result;

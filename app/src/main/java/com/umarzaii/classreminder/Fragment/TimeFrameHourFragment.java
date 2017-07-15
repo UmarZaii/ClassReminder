@@ -80,12 +80,17 @@ public class TimeFrameHourFragment extends Fragment {
             @Override
             protected void populateViewHolder(TimeFrameHourViewHolder viewHolder, TimeFrameModel model, int position) {
 
-                viewHolder.setTimeGap(model.getTimeGap());
-                viewHolder.setSubjectID(model.getSubjectID());
+                String timeGap = model.getTimeGap();
+                String subjectID = model.getSubjectID();
+                String classLocationID = model.getClassLocationID();
+                String userClassID = model.getUserClassID();
+
+                viewHolder.setTimeGap(timeGap);
+                viewHolder.setSubjectID(subjectID);
                 if (displayType.equals(databaseHandler.tblUserClass)) {
-                    viewHolder.setAnyClassID(model.getClassLocationID());
+                    viewHolder.setAnyClassID(classLocationID);
                 } else if (displayType.equals(databaseHandler.tblClassLocation)) {
-                    viewHolder.setAnyClassID(model.getUserClassID());
+                    viewHolder.setAnyClassID(userClassID);
                 }
 
             }
