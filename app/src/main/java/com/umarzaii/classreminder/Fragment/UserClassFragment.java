@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,7 @@ public class UserClassFragment extends Fragment {
             protected void populateViewHolder(UserClassViewHolder viewHolder, UserClassModel model, int position) {
 
                 viewHolder.setUserClassID(model.getUserClassID());
+                Log.d("test", model.getUserClassID());
 
                 viewHolder.fView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -87,6 +89,8 @@ public class UserClassFragment extends Fragment {
 
             }
         };
+
+        rvUserClass.setAdapter(firebaseRecyclerAdapter);
     }
 
     public static class UserClassViewHolder extends RecyclerView.ViewHolder {
