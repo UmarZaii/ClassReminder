@@ -96,7 +96,7 @@ public class TimeFrameDayFragment extends Fragment {
                             bundle.putString("displayType", databaseHandler.tblClassLocation);
                         }
 
-//                        fragmentHandler.stackFragment(new TimeFrameHourFragment(),bundle,"TimeFrameHour");
+                        fragmentHandler.stackFragment(new TimeFrameHourFragment(),bundle,"TimeFrameHour");
                     }
                 });
 

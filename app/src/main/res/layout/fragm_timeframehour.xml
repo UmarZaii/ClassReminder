@@ -11,8 +11,8 @@
         android:layout_marginBottom="50dp"
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
-        android:paddingLeft="64dp"
-        android:paddingRight="64dp">
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <android.support.v7.widget.RecyclerView
             android:background="#ffffff"

@@ -14,7 +14,7 @@ public class TimeFrameModel {
     public String timeGap;
     public String timeID;
     public String userClassID;
-    public String classLocation;
+    public String classLocationID;
     public String subjectID;
 
     public static final String strUserClass = "userClass";
@@ -24,16 +24,36 @@ public class TimeFrameModel {
 
     }
 
-    public TimeFrameModel(String timeGap, String timeID, String userClassID, String classLocation, String subjectID) {
+    public TimeFrameModel(String timeGap, String timeID, String userClassID, String classLocationID, String subjectID) {
         this.timeGap = timeGap;
         this.timeID = timeID;
         this.userClassID = userClassID;
-        this.classLocation = classLocation;
+        this.classLocationID = classLocationID;
         this.subjectID = subjectID;
+    }
+
+    public String getUserClassID() {
+        return userClassID;
+    }
+
+    public String getClassLocationID() {
+        return classLocationID;
+    }
+
+    public String getSubjectID() {
+        return subjectID;
     }
 
     public String getDayID() {
         return dayID;
+    }
+
+    public String getTimeGap() {
+        return timeGap;
+    }
+
+    public String getTimeID() {
+        return timeID;
     }
 
     @Exclude
@@ -52,7 +72,7 @@ public class TimeFrameModel {
         HashMap<String, Object> result = new HashMap<>();
         result.put("timeGap", timeGap);
         result.put("timeID", timeID);
-        result.put("classLocation", classLocation);
+        result.put("classLocationID", classLocationID);
         result.put("subjectID", subjectID);
 
         return result;
