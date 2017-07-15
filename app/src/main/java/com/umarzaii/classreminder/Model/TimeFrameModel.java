@@ -24,15 +24,10 @@ public class TimeFrameModel {
 
     }
 
-    public TimeFrameModel(String timeGap, String timeID, String userClassID) {
+    public TimeFrameModel(String timeGap, String timeID, String userClassID, String classLocation, String subjectID) {
         this.timeGap = timeGap;
         this.timeID = timeID;
         this.userClassID = userClassID;
-    }
-
-    public TimeFrameModel(String timeGap, String timeID, String classLocation, String subjectID) {
-        this.timeGap = timeGap;
-        this.timeID = timeID;
         this.classLocation = classLocation;
         this.subjectID = subjectID;
     }
@@ -47,6 +42,7 @@ public class TimeFrameModel {
         result.put("timeGap", timeGap);
         result.put("timeID", timeID);
         result.put("userClass", userClassID);
+        result.put("subjectID", subjectID);
 
         return result;
     }
@@ -64,11 +60,12 @@ public class TimeFrameModel {
 
     //TimeFrame Flaws
     @Exclude
-    private Map<String, Object> classLocationInitDetails(String timeGap, String timeID, String userClassID) {
+    private Map<String, Object> classLocationInitDetails(String timeGap, String timeID, String userClassID, String subjectID) {
         HashMap<String, Object> result = new HashMap<>();
         result.put("timeGap", timeGap);
         result.put("timeID", timeID);
         result.put("userClassID", userClassID);
+        result.put("subjectID", subjectID);
 
         return result;
     }
@@ -87,7 +84,7 @@ public class TimeFrameModel {
 
     //TimeFrame Flaws
     @Exclude
-    private Map<String, Object> classLocationTimeInitLoop(String dayID) {
+    private Map<String, Object> timeFrameHourLoop(String initType, String dayID) {
         ArrayList<String> time = new ArrayList<String>();
         time.add("0800to0900");
         time.add("0900to1000");
@@ -103,35 +100,15 @@ public class TimeFrameModel {
         HashMap<String, Object> result = new HashMap<>();
         for (String timeID: time) {
             String timeGap = timeID.substring(0,2) + ".00 - " + timeID.substring(6,8) + ".00";
-            Map<String, Object> details = classLocationInitDetails(timeGap,timeID,"None");
+            Map<String, Object> details = null;
+            if (initType.equals(strUserClass)) {
+                details = userClassInitDetails(timeGap,timeID,"None","None");
+            } else if (initType.equals(strClassLocation)) {
+                details = classLocationInitDetails(timeGap,timeID,"None","None");
+            }
             result.put(timeID, details);
         }
-        result.put("dayID", dayID);
 
-        return result;
-    }
-
-    //TimeFrame Flaws
-    @Exclude
-    private Map<String, Object> userClassTimeInitLoop(String dayID) {
-        ArrayList<String> time = new ArrayList<String>();
-        time.add("0800to0900");
-        time.add("0900to1000");
-        time.add("1000to1100");
-        time.add("1100to1200");
-        time.add("1200to1300");
-        time.add("1300to1400");
-        time.add("1400to1500");
-        time.add("1500to1600");
-        time.add("1600to1700");
-        time.add("1700to1800");
-
-        HashMap<String, Object> result = new HashMap<>();
-        for (String timeID: time) {
-            String timeGap = timeID.substring(0,2) + ".00 - " + timeID.substring(6,8) + ".00";
-            Map<String, Object> details = userClassInitDetails(timeGap,timeID,"None","None");
-            result.put(timeID, details);
-        }
         result.put("dayID", dayID);
 
         return result;
@@ -150,17 +127,9 @@ public class TimeFrameModel {
         day.add("Sunday");
 
         HashMap<String, Object> result = new HashMap<>();
-
-        if (initType.equals(strUserClass)) {
-            for (String dayID: day) {
-                Map<String, Object> details = userClassTimeInitLoop(dayID);
-                result.put(dayID, details);
-            }
-        } else if (initType.equals(strClassLocation)) {
-            for (String dayID: day) {
-                Map<String, Object> details = classLocationTimeInitLoop(dayID);
-                result.put(dayID, details);
-            }
+        for (String dayID: day) {
+            Map<String, Object> details = timeFrameHourLoop(initType,dayID);
+            result.put(dayID, details);
         }
 
         return result;
