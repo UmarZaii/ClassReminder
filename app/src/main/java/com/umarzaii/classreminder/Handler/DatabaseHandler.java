@@ -2,8 +2,11 @@ package com.umarzaii.classreminder.Handler;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -16,7 +19,20 @@ public class DatabaseHandler {
     private static boolean isPersistenceEnabled = false;
 
     private String userID;
-    public String tblUser = "tblUser";
+
+    private String tblUser = "tblUser";
+    private String tblUniversity = "tblUniversity";
+    private String tblCourse = "tblCourse";
+    private String tblSubject = "tblSubject";
+    private String tblClassLocation = "tblClassLocation";
+    private String tblUserClass = "tblUserClass";
+    private String credentials = "credentials";
+    private String timeFrame = "timeFrame";
+    private String userClassList = "userClassList";
+    private String courseAdmin = "courseAdmin";
+
+    public static String PSMZAID = "a2wx2pyFWJbRcOYWqkwwu7YwgRo2";
+    public static String courseID = "courseID";
 
     public DatabaseHandler() {
         if (!isPersistenceEnabled) {
@@ -39,12 +55,64 @@ public class DatabaseHandler {
         return firebaseAuth.getCurrentUser();
     }
 
+    public StorageReference getTblBusinessStorage(String businessID, String pathFile) {
+        return storageReference.child(businessID).child(pathFile);
+    }
+
     public DatabaseReference getTblUser() {
         return databaseReference.child(tblUser);
     }
 
-    public StorageReference getTblBusinessStorage(String businessID, String pathFile) {
-        return storageReference.child(businessID).child(pathFile);
+    public DatabaseReference getTblUser(String userID) {
+        return databaseReference.child(tblUser).child(userID);
+    }
+
+    public DatabaseReference getTblUserCredentials(String userID) {
+        return databaseReference.child(tblUser).child(userID).child(credentials);
+    }
+
+    public DatabaseReference getTblUniversity(String uniID) {
+        return databaseReference.child(tblUniversity).child(uniID);
+    }
+
+    public DatabaseReference getTblUniversityCourse(String uniID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblCourse);
+    }
+
+    public DatabaseReference getTblUniversityCourse(String uniID, String courseID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblCourse).child(courseID);
+    }
+
+    public DatabaseReference getTblUniversityCourseAdmin(String uniID, String courseID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblCourse).child(courseID).child(courseAdmin);
+    }
+
+    public DatabaseReference getTblUniversityCourseClassList(String uniID, String courseID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblCourse).child(courseID).child(userClassList);
+    }
+
+    public DatabaseReference getTblUniversityClassLocation(String uniID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation);
+    }
+
+    public DatabaseReference getTblUniversityClassLocation(String uniID, String classLocationID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation).child(classLocationID);
+    }
+
+    public DatabaseReference getTblUniversityClassLocationTimeFrame(String uniID, String classLocationID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation).child(classLocationID).child(timeFrame);
+    }
+
+    public DatabaseReference getTblUniversityUserClass(String uniID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass);
+    }
+
+    public DatabaseReference getTblUniversityUserClass(String uniID, String userClassID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID);
+    }
+
+    public DatabaseReference getTblUniversitySubject(String uniID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblSubject);
     }
 
     public String getUserID() {

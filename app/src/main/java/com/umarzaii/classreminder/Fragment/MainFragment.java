@@ -11,13 +11,15 @@ import android.widget.Button;
 
 import com.umarzaii.classreminder.Activity.LoginActivity;
 import com.umarzaii.classreminder.Handler.DatabaseHandler;
+import com.umarzaii.classreminder.Handler.FragmentHandler;
 import com.umarzaii.classreminder.R;
 
 public class MainFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
+    private FragmentHandler fragmentHandler;
 
-    private Button btnLogOut;
+    private Button btnLogOut, btnMyQRCode, btnGoToAddClassLocation, btnGoToAddSubject, btnGoToUserClass;
 
     @Nullable
     @Override
@@ -33,8 +35,41 @@ public class MainFragment extends Fragment {
         View v = getView();
 
         databaseHandler = new DatabaseHandler();
+        fragmentHandler = new FragmentHandler(getActivity().getSupportFragmentManager());
 
+        btnGoToAddClassLocation = (Button)v.findViewById(R.id.btnGoToAddClassLocation);
+        btnGoToAddSubject = (Button)v.findViewById(R.id.btnGoToAddSubject);
+        btnGoToUserClass = (Button)v.findViewById(R.id.btnGoToUserClass);
+        btnMyQRCode = (Button)v.findViewById(R.id.btnMyQRCode);
         btnLogOut = (Button)v.findViewById(R.id.btnLogOut);
+
+        btnGoToAddClassLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentHandler.stackFragment(new AddClassLocationFragment(),"AddClassLocation");
+            }
+        });
+
+        btnGoToAddSubject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentHandler.stackFragment(new AddSubjectFragment(),"AddSubject");
+            }
+        });
+
+        btnGoToUserClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentHandler.stackFragment(new UserClassFragment(),"UserClass");
+            }
+        });
+
+        btnMyQRCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentHandler.stackFragment(new MyQRCodeFragment(),"MyQRCode");
+            }
+        });
 
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override

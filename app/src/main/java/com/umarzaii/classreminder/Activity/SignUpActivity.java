@@ -26,11 +26,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     private DatabaseHandler databaseHandler;
 
-    private EditText edtUserNameReg, edtUserEmailReg, edtUserPassReg, edtUserFacultyIDReg, edtUserCourseCodeReg;
+    private EditText edtUserNameReg, edtUserEmailReg, edtUserPassReg;
     private Button btnSignUp;
     private ProgressDialog progressDialog;
 
-    private String strUserNameReg, strUserEmailReg, strUserPassReg, strUserFacultyIDReg, strUserCourseCodeReg;
+    private String strUserNameReg, strUserEmailReg, strUserPassReg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,6 @@ public class SignUpActivity extends AppCompatActivity {
         edtUserNameReg = (EditText)findViewById(R.id.edtUserNameReg);
         edtUserEmailReg = (EditText)findViewById(R.id.edtUserEmailReg);
         edtUserPassReg = (EditText)findViewById(R.id.edtUserPassReg);
-        edtUserFacultyIDReg = (EditText)findViewById(R.id.edtUserFacultyIDReg);
-        edtUserCourseCodeReg = (EditText)findViewById(R.id.edtUserCourseCodeReg);
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +53,6 @@ public class SignUpActivity extends AppCompatActivity {
                 strUserNameReg = edtUserNameReg.getText().toString().trim();
                 strUserEmailReg = edtUserEmailReg.getText().toString().trim();
                 strUserPassReg = edtUserPassReg.getText().toString().trim();
-                strUserFacultyIDReg = edtUserFacultyIDReg.getText().toString().trim();
-                strUserCourseCodeReg = edtUserCourseCodeReg.getText().toString().trim();
 
                 if (inputCheck()) {
                     signUp();
@@ -75,12 +71,6 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         } else if (TextUtils.isEmpty(strUserPassReg)){
             Toast.makeText(SignUpActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (TextUtils.isEmpty(strUserFacultyIDReg)){
-            Toast.makeText(SignUpActivity.this, "Please enter your matric no", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (TextUtils.isEmpty(strUserCourseCodeReg)){
-            Toast.makeText(SignUpActivity.this, "Please enter your course code", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             return true;
@@ -106,9 +96,9 @@ public class SignUpActivity extends AppCompatActivity {
                     final String strUserIDReg = databaseHandler.getUserID();
                     final Map<String, Object> dataMap = new HashMap<String, Object>();
 
-                    UserModel userModel = new UserModel(strUserIDReg,strUserEmailReg,strUserNameReg,strUserFacultyIDReg,strUserCourseCodeReg);
+                    UserModel userModel = new UserModel(strUserIDReg,strUserEmailReg,strUserNameReg);
 
-                    dataMap.put(strUserFacultyIDReg, userModel.toMap());
+                    dataMap.put(strUserIDReg, userModel.toMap());
                     databaseHandler.getTblUser().updateChildren(dataMap);
 
                     databaseHandler.getCurrentUser().sendEmailVerification();

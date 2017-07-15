@@ -41,26 +41,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp" />
 
-    <EditText
-        android:id="@+id/edtUserFacultyIDReg"
-        android:ems="15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Matric No"
-        android:layout_below="@+id/edtUserNameReg"
-        android:layout_alignLeft="@+id/edtUserNameReg"
-        android:layout_alignStart="@+id/edtUserNameReg" />
-
-    <EditText
-        android:id="@+id/edtUserCourseCodeReg"
-        android:ems="15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Course Code"
-        android:layout_below="@+id/edtUserFacultyIDReg"
-        android:layout_alignLeft="@+id/edtUserFacultyIDReg"
-        android:layout_alignStart="@+id/edtUserFacultyIDReg" />
-
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
