@@ -24,15 +24,16 @@ public class DatabaseHandler {
     private String tblUniversity = "tblUniversity";
     private String tblCourse = "tblCourse";
     private String tblSubject = "tblSubject";
-    private String tblClassLocation = "tblClassLocation";
-    private String tblUserClass = "tblUserClass";
     private String credentials = "credentials";
     private String timeFrame = "timeFrame";
     private String userClassList = "userClassList";
     private String courseAdmin = "courseAdmin";
 
-    public static String PSMZAID = "a2wx2pyFWJbRcOYWqkwwu7YwgRo2";
+    public static String tblClassLocation = "tblClassLocation";
+    public static String tblUserClass = "tblUserClass";
     public static String courseID = "courseID";
+
+    public static String PSMZAID = "a2wx2pyFWJbRcOYWqkwwu7YwgRo2";
 
     public DatabaseHandler() {
         if (!isPersistenceEnabled) {
@@ -109,6 +110,10 @@ public class DatabaseHandler {
 
     public DatabaseReference getTblUniversityUserClass(String uniID, String userClassID) {
         return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID);
+    }
+
+    public DatabaseReference getTblUniversityUserClassTimeFrame(String uniID, String userClassID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID).child(timeFrame);
     }
 
     public DatabaseReference getTblUniversitySubject(String uniID) {

@@ -10,6 +10,7 @@ import java.util.Map;
 @IgnoreExtraProperties
 public class TimeFrameModel {
 
+    public String dayID;
     public String timeGap;
     public String timeID;
     public String userClassID;
@@ -34,6 +35,10 @@ public class TimeFrameModel {
         this.timeID = timeID;
         this.classLocation = classLocation;
         this.subjectID = subjectID;
+    }
+
+    public String getDayID() {
+        return dayID;
     }
 
     @Exclude

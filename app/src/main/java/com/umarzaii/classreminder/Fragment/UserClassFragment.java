@@ -77,13 +77,18 @@ public class UserClassFragment extends Fragment {
             @Override
             protected void populateViewHolder(UserClassViewHolder viewHolder, UserClassModel model, int position) {
 
-                viewHolder.setUserClassID(model.getUserClassID());
-                Log.d("test", model.getUserClassID());
+                final String userClassID = model.getUserClassID();
+
+                viewHolder.setUserClassID(userClassID);
 
                 viewHolder.fView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("userClassID", userClassID);
+                        bundle.putString("displayType", databaseHandler.tblUserClass);
 
+                        fragmentHandler.stackFragment(new TimeFrameDayFragment(),bundle,"TimeFrameDay");
                     }
                 });
 

@@ -76,12 +76,17 @@ public class ClassLocationFragment extends Fragment {
             @Override
             protected void populateViewHolder(ClassLocationViewHolder viewHolder, ClassLocationModel model, int position) {
 
-                viewHolder.setClassLocationID(model.getClassLocationID());
+                final String classLocationID = model.getClassLocationID();
+                viewHolder.setClassLocationID(classLocationID);
 
                 viewHolder.fView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("classLocationID", classLocationID);
+                        bundle.putString("displayType", databaseHandler.tblClassLocation);
 
+                        fragmentHandler.stackFragment(new TimeFrameDayFragment(),bundle,"TimeFrameDay");
                     }
                 });
 
