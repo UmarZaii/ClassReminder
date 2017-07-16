@@ -104,7 +104,7 @@ public class AddUserClassFragment extends Fragment {
         databaseHandler.getTblUniversityUserClass(PSMZAID).updateChildren(dataMap);
         databaseHandler.getTblUniversityCourseClassList(PSMZAID,strUserCourseID).updateChildren(dataMap);
 
-        timeFrameDataMap.put("timeFrame", timeFrameModel.timeFrameInitLoop(TimeFrameModel.strUserClass));
+        timeFrameDataMap.put(databaseHandler.timeFrameDay, timeFrameModel.timeFrameInitLoop(TimeFrameModel.strUserClass));
         databaseHandler.getTblUniversityUserClass(PSMZAID,strUserClassIDReg).updateChildren(timeFrameDataMap);
 
         fragmentHandler.popBackStack("AddUserClass");

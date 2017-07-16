@@ -25,13 +25,14 @@ public class DatabaseHandler {
     private String tblCourse = "tblCourse";
     private String tblSubject = "tblSubject";
     private String credentials = "credentials";
-    private String timeFrame = "timeFrame";
     private String userClassList = "userClassList";
     private String courseAdmin = "courseAdmin";
 
     public static String tblClassLocation = "tblClassLocation";
     public static String tblUserClass = "tblUserClass";
     public static String courseID = "courseID";
+    public static String timeFrameDay = "timeFrameDay";
+    public static String timeFrameHour = "timeFrameHour";
 
     public static String PSMZAID = "a2wx2pyFWJbRcOYWqkwwu7YwgRo2";
 
@@ -100,8 +101,14 @@ public class DatabaseHandler {
         return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation).child(classLocationID);
     }
 
-    public DatabaseReference getTblUniversityClassLocationTimeFrame(String uniID, String classLocationID) {
-        return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation).child(classLocationID).child(timeFrame);
+    public DatabaseReference getTblUniversityClassLocationTimeFrameDay(String uniID, String classLocationID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation).child(classLocationID)
+                .child(timeFrameDay);
+    }
+
+    public DatabaseReference getTblUniversityClassLocationTimeFrameHour(String uniID, String classLocationID, String dayID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation).child(classLocationID)
+                .child(timeFrameDay).child(dayID).child(timeFrameHour);
     }
 
     public DatabaseReference getTblUniversityUserClass(String uniID) {
@@ -112,8 +119,14 @@ public class DatabaseHandler {
         return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID);
     }
 
-    public DatabaseReference getTblUniversityUserClassTimeFrame(String uniID, String userClassID) {
-        return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID).child(timeFrame);
+    public DatabaseReference getTblUniversityUserClassTimeFrameDay(String uniID, String userClassID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID)
+                .child(timeFrameDay);
+    }
+
+    public DatabaseReference getTblUniversityUserClassTimeFrameHour(String uniID, String userClassID, String dayID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID)
+                .child(timeFrameDay).child(dayID).child(timeFrameHour);
     }
 
     public DatabaseReference getTblUniversitySubject(String uniID) {

@@ -83,7 +83,7 @@ public class AddClassLocationFragment extends Fragment {
         classLocationDataMap.put(strClassLocationID, classLocationModel.detailsToMap());
         databaseHandler.getTblUniversityClassLocation(PSMZAID).updateChildren(classLocationDataMap);
 
-        timeFrameDataMap.put("timeFrame", timeFrameModel.timeFrameInitLoop(TimeFrameModel.strClassLocation));
+        timeFrameDataMap.put(databaseHandler.timeFrameDay, timeFrameModel.timeFrameInitLoop(TimeFrameModel.strClassLocation));
         databaseHandler.getTblUniversityClassLocation(PSMZAID,strClassLocationID).updateChildren(timeFrameDataMap);
 
         fragmentHandler.popBackStack("AddClassLocation");

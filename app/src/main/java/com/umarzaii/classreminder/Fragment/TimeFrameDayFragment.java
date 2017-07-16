@@ -52,10 +52,10 @@ public class TimeFrameDayFragment extends Fragment {
         displayType = getArguments().getString("displayType");
         if (displayType.equals(databaseHandler.tblUserClass)) {
             userClassID = getArguments().getString("userClassID");
-            dbClassPicker = databaseHandler.getTblUniversityUserClassTimeFrame(PSMZAID,userClassID);
+            dbClassPicker = databaseHandler.getTblUniversityUserClassTimeFrameDay(PSMZAID,userClassID);
         } else if (displayType.equals(databaseHandler.tblClassLocation)) {
             classLocationID = getArguments().getString("classLocationID");
-            dbClassPicker = databaseHandler.getTblUniversityClassLocationTimeFrame(PSMZAID,classLocationID);
+            dbClassPicker = databaseHandler.getTblUniversityClassLocationTimeFrameDay(PSMZAID,classLocationID);
         }
 
         rvTimeFrameDay.setHasFixedSize(true);

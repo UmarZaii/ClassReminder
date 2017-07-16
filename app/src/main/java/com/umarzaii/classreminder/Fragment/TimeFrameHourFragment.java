@@ -53,10 +53,10 @@ public class TimeFrameHourFragment extends Fragment {
         displayType = getArguments().getString("displayType");
         if (displayType.equals(databaseHandler.tblUserClass)) {
             userClassID = getArguments().getString("userClassID");
-            dbClassPicker = databaseHandler.getTblUniversityUserClassTimeFrame(PSMZAID,userClassID);
+            dbClassPicker = databaseHandler.getTblUniversityUserClassTimeFrameHour(PSMZAID,userClassID,dayID);
         } else if (displayType.equals(databaseHandler.tblClassLocation)) {
             classLocationID = getArguments().getString("classLocationID");
-            dbClassPicker = databaseHandler.getTblUniversityClassLocationTimeFrame(PSMZAID,classLocationID);
+            dbClassPicker = databaseHandler.getTblUniversityClassLocationTimeFrameHour(PSMZAID,classLocationID,dayID);
         }
 
         rvTimeFrameHour.setHasFixedSize(true);
@@ -74,7 +74,7 @@ public class TimeFrameHourFragment extends Fragment {
                 TimeFrameModel.class,
                 R.layout.rvitem_timeframehourrow,
                 TimeFrameHourViewHolder.class,
-                dbClassPicker.child(dayID)
+                dbClassPicker
 
         ) {
             @Override

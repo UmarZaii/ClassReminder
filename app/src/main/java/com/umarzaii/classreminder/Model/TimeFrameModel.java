@@ -118,6 +118,8 @@ public class TimeFrameModel {
         time.add("1700to1800");
 
         HashMap<String, Object> result = new HashMap<>();
+        HashMap<String, Object> timeFrameHour = new HashMap<>();
+
         for (String timeID: time) {
             String timeGap = timeID.substring(0,2) + ".00 - " + timeID.substring(6,8) + ".00";
             Map<String, Object> details = null;
@@ -126,9 +128,10 @@ public class TimeFrameModel {
             } else if (initType.equals(strClassLocation)) {
                 details = classLocationInitDetails(timeGap,timeID,"None","None");
             }
-            result.put(timeID, details);
+            timeFrameHour.put(timeID, details);
         }
 
+        result.put("timeFrameHour", timeFrameHour);
         result.put("dayID", dayID);
 
         return result;
