@@ -29,7 +29,7 @@ public class TimeFrameHourFragment extends Fragment {
     private DatabaseReference dbClassPicker;
     private RecyclerView rvTimeFrameHour;
 
-    private String dayID, classLocationID, userClassID, displayType;
+    private String dayID, classLocationIDPath, userClassIDPath, displayType;
 
     @Nullable
     @Override
@@ -52,11 +52,11 @@ public class TimeFrameHourFragment extends Fragment {
         dayID = getArguments().getString("dayID");
         displayType = getArguments().getString("displayType");
         if (displayType.equals(databaseHandler.tblUserClass)) {
-            userClassID = getArguments().getString("userClassID");
-            dbClassPicker = databaseHandler.getTblUniversityUserClassTimeFrameHour(PSMZAID,userClassID,dayID);
+            userClassIDPath = getArguments().getString("userClassID");
+            dbClassPicker = databaseHandler.getTblUniversityUserClassTimeFrameHour(PSMZAID,userClassIDPath,dayID);
         } else if (displayType.equals(databaseHandler.tblClassLocation)) {
-            classLocationID = getArguments().getString("classLocationID");
-            dbClassPicker = databaseHandler.getTblUniversityClassLocationTimeFrameHour(PSMZAID,classLocationID,dayID);
+            classLocationIDPath = getArguments().getString("classLocationID");
+            dbClassPicker = databaseHandler.getTblUniversityClassLocationTimeFrameHour(PSMZAID,classLocationIDPath,dayID);
         }
 
         rvTimeFrameHour.setHasFixedSize(true);
@@ -80,10 +80,11 @@ public class TimeFrameHourFragment extends Fragment {
             @Override
             protected void populateViewHolder(TimeFrameHourViewHolder viewHolder, TimeFrameModel model, int position) {
 
-                String timeGap = model.getTimeGap();
-                String subjectID = model.getSubjectID();
-                String classLocationID = model.getClassLocationID();
-                String userClassID = model.getUserClassID();
+                final String timeID = model.getTimeID();
+                final String timeGap = model.getTimeGap();
+                final String subjectID = model.getSubjectID();
+                final String classLocationID = model.getClassLocationID();
+                final String userClassID = model.getUserClassID();
 
                 viewHolder.setTimeGap(timeGap);
                 viewHolder.setSubjectID(subjectID);
@@ -92,6 +93,29 @@ public class TimeFrameHourFragment extends Fragment {
                 } else if (displayType.equals(databaseHandler.tblClassLocation)) {
                     viewHolder.setAnyClassID(userClassID);
                 }
+
+                viewHolder.fView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("dayID", dayID);
+                        bundle.putString("timeID", timeID);
+                        bundle.putString("timeGap", timeGap);
+                        bundle.putString("subjectID", subjectID);
+
+                        if (displayType.equals(databaseHandler.tblUserClass)) {
+                            bundle.putString("userClassID", userClassIDPath);
+                            bundle.putString("classLocationID", classLocationID);
+                            bundle.putString("displayType", databaseHandler.tblUserClass);
+                        } else if (displayType.equals(databaseHandler.tblClassLocation)) {
+                            bundle.putString("classLocationID", classLocationIDPath);
+                            bundle.putString("userClassID", userClassID);
+                            bundle.putString("displayType", databaseHandler.tblClassLocation);
+                        }
+
+                        fragmentHandler.stackFragment(new AddTimeFrameFragment(),bundle,"AddTimeFrame");
+                    }
+                });
 
             }
         };

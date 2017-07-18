@@ -23,13 +23,13 @@ public class DatabaseHandler {
     private String tblUser = "tblUser";
     private String tblUniversity = "tblUniversity";
     private String tblCourse = "tblCourse";
-    private String tblSubject = "tblSubject";
     private String credentials = "credentials";
     private String userClassList = "userClassList";
     private String courseAdmin = "courseAdmin";
 
     public static String tblClassLocation = "tblClassLocation";
     public static String tblUserClass = "tblUserClass";
+    public static String tblSubject = "tblSubject";
     public static String courseID = "courseID";
     public static String timeFrameDay = "timeFrameDay";
     public static String timeFrameHour = "timeFrameHour";
