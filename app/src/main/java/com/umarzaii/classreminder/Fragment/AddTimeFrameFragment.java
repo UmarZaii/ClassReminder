@@ -248,11 +248,11 @@ public class AddTimeFrameFragment extends Fragment {
             Log.d(anyClassIDSelection, anyClassIDSelection);
 
             userClassTimeFrame.put(timeID, timeFrameModel.userClassToMap());
-            databaseHandler.getTblUniversityUserClassTimeFrameHour(PSMZAID,userClassIDPath,dayID,timeID)
+            databaseHandler.getTblUniversityUserClassTimeFrameHour(PSMZAID,userClassIDPath,dayID)
                     .updateChildren(userClassTimeFrame);
 
             classLocationTimeFrame.put(timeID, timeFrameModel.classLocationToMap());
-            databaseHandler.getTblUniversityClassLocationTimeFrameHour(PSMZAID,anyClassIDSelection,dayID,timeID)
+            databaseHandler.getTblUniversityClassLocationTimeFrameHour(PSMZAID,anyClassIDSelection,dayID)
                     .updateChildren(classLocationTimeFrame);
 
         } else if (displayType.equals(databaseHandler.tblClassLocation)) {
