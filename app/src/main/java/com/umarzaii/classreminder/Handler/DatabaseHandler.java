@@ -111,6 +111,11 @@ public class DatabaseHandler {
                 .child(timeFrameDay).child(dayID).child(timeFrameHour);
     }
 
+    public DatabaseReference getTblUniversityClassLocationTimeFrameHour(String uniID, String classLocationID, String dayID, String timeFrameID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblClassLocation).child(classLocationID)
+                .child(timeFrameDay).child(dayID).child(timeFrameHour).child(timeFrameID);
+    }
+
     public DatabaseReference getTblUniversityUserClass(String uniID) {
         return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass);
     }
@@ -127,6 +132,11 @@ public class DatabaseHandler {
     public DatabaseReference getTblUniversityUserClassTimeFrameHour(String uniID, String userClassID, String dayID) {
         return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID)
                 .child(timeFrameDay).child(dayID).child(timeFrameHour);
+    }
+
+    public DatabaseReference getTblUniversityUserClassTimeFrameHour(String uniID, String userClassID, String dayID, String timeFrameID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblUserClass).child(userClassID)
+                .child(timeFrameDay).child(dayID).child(timeFrameHour).child(timeFrameID);
     }
 
     public DatabaseReference getTblUniversitySubject(String uniID) {

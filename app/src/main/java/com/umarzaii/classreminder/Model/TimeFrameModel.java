@@ -61,7 +61,7 @@ public class TimeFrameModel {
         HashMap<String, Object> result = new HashMap<>();
         result.put("timeGap", timeGap);
         result.put("timeID", timeID);
-        result.put("userClass", userClassID);
+        result.put("userClassID", userClassID);
         result.put("subjectID", subjectID);
 
         return result;

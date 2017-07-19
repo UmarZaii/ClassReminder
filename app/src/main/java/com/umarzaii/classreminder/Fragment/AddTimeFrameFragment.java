@@ -25,6 +25,7 @@ import com.umarzaii.classreminder.Handler.DatabaseHandler;
 import com.umarzaii.classreminder.Handler.FragmentHandler;
 import com.umarzaii.classreminder.Model.ClassLocationModel;
 import com.umarzaii.classreminder.Model.SubjectModel;
+import com.umarzaii.classreminder.Model.TimeFrameModel;
 import com.umarzaii.classreminder.Model.UserClassModel;
 import com.umarzaii.classreminder.R;
 
@@ -40,16 +41,32 @@ public class AddTimeFrameFragment extends Fragment {
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
 
-    private String[] subjectList, anyClassList;
-    private ArrayAdapter<String> adpSubj, adpAnyClass;
+    private String[] subjectList;
+    private String[] anyClassList;
+
+    private ArrayAdapter<String> adpSubj;
+    private ArrayAdapter<String> adpAnyClass;
 
     private TextView txtAnyClassIDPath, txtDayIDPath, txtTimeFrameHourID;
     private Button btnAddTimeFrame;
     private Spinner spnSubjectIDInfo, spnAnyClassIDInfo;
 
-    private String timeID, timeGap, subjectID, classLocationID, userClassID,
-            displayType, dayID, classLocationIDPath, userClassIDPath,
-            subjIDSelection, anyClassIDSelection;
+    private String timeID;
+    private String timeGap;
+    private String subjectID;
+    private String classLocationID;
+    private String userClassID;
+
+    private String displayType;
+    private String dayID;
+    private String classLocationIDPath;
+    private String userClassIDPath;
+
+    private String subjIDSelection;
+    private String anyClassIDSelection;
+
+    private static boolean boolSubj = true;
+    private static boolean boolAnyClass = true;
 
     @Nullable
     @Override
@@ -120,7 +137,10 @@ public class AddTimeFrameFragment extends Fragment {
         databaseHandler.getTblUniversitySubject(PSMZAID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                getSpinnerList(dataSnapshot,databaseHandler.tblSubject);
+                if (boolSubj) {
+                    getSpinnerList(dataSnapshot,databaseHandler.tblSubject);
+                    boolSubj = false;
+                }
             }
 
             @Override
@@ -154,7 +174,10 @@ public class AddTimeFrameFragment extends Fragment {
         anyClassListDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                getSpinnerList(dataSnapshot,displayType);
+                if (boolAnyClass) {
+                    getSpinnerList(dataSnapshot,displayType);
+                    boolAnyClass = false;
+                }
             }
 
             @Override
@@ -216,19 +239,37 @@ public class AddTimeFrameFragment extends Fragment {
     }
 
     private void addTimeFrameDetails() {
-//        if (displayType.equals(databaseHandler.tblUserClass)) {
-//
-//        } else if (displayType.equals(databaseHandler.tblClassLocation)) {
-//
-//        }
-//
-//        final String strUserIDReg = databaseHandler.getUserID();
-//        final Map<String, Object> dataMap = new HashMap<String, Object>();
-//
-//        UserModel userModel = new UserModel(strUserIDReg,strUserEmailReg,strUserNameReg);
-//
-//        dataMap.put(strUserIDReg, userModel.toMap());
-//        databaseHandler.getTblUser().updateChildren(dataMap);
+        final Map<String, Object> classLocationTimeFrame = new HashMap<String, Object>();
+        final Map<String, Object> userClassTimeFrame = new HashMap<String, Object>();
+
+        if (displayType.equals(databaseHandler.tblUserClass)) {
+            TimeFrameModel timeFrameModel = new TimeFrameModel(timeGap,timeID,userClassIDPath,anyClassIDSelection,subjIDSelection);
+            Log.d(userClassIDPath, userClassIDPath);
+            Log.d(anyClassIDSelection, anyClassIDSelection);
+
+            userClassTimeFrame.put(timeID, timeFrameModel.userClassToMap());
+            databaseHandler.getTblUniversityUserClassTimeFrameHour(PSMZAID,userClassIDPath,dayID,timeID)
+                    .updateChildren(userClassTimeFrame);
+
+            classLocationTimeFrame.put(timeID, timeFrameModel.classLocationToMap());
+            databaseHandler.getTblUniversityClassLocationTimeFrameHour(PSMZAID,anyClassIDSelection,dayID,timeID)
+                    .updateChildren(classLocationTimeFrame);
+
+        } else if (displayType.equals(databaseHandler.tblClassLocation)) {
+            TimeFrameModel timeFrameModel = new TimeFrameModel(timeGap,timeID,anyClassIDSelection,classLocationIDPath,subjIDSelection);
+            Log.d(anyClassIDSelection, anyClassIDSelection);
+            Log.d(classLocationIDPath, classLocationIDPath);
+
+            classLocationTimeFrame.put(timeID, timeFrameModel.classLocationToMap());
+            databaseHandler.getTblUniversityClassLocationTimeFrameHour(PSMZAID,classLocationIDPath,dayID)
+                    .updateChildren(classLocationTimeFrame);
+
+            userClassTimeFrame.put(timeID, timeFrameModel.userClassToMap());
+            databaseHandler.getTblUniversityUserClassTimeFrameHour(PSMZAID,anyClassIDSelection,dayID)
+                    .updateChildren(userClassTimeFrame);
+        }
+
+        fragmentHandler.popBackStack("AddTimeFrame");
     }
 
 }
