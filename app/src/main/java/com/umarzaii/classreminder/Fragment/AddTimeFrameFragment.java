@@ -65,8 +65,8 @@ public class AddTimeFrameFragment extends Fragment {
     private String subjIDSelection;
     private String anyClassIDSelection;
 
-    private static boolean boolSubj = true;
-    private static boolean boolAnyClass = true;
+    private boolean boolSubj = true;
+    private boolean boolAnyClass = true;
 
     @Nullable
     @Override
