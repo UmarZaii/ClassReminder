@@ -19,7 +19,12 @@ public class MainFragment extends Fragment {
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
 
-    private Button btnLogOut, btnMyQRCode, btnGoToAddClassLocation, btnGoToAddSubject, btnGoToUserClass;
+    private Button btnGoToScanLect;
+    private Button btnLogOut;
+    private Button btnMyQRCode;
+    private Button btnGoToAddClassLocation;
+    private Button btnGoToAddSubject;
+    private Button btnGoToUserClass;
 
     @Nullable
     @Override
@@ -37,11 +42,19 @@ public class MainFragment extends Fragment {
         databaseHandler = new DatabaseHandler();
         fragmentHandler = new FragmentHandler(getActivity().getSupportFragmentManager());
 
+        btnGoToScanLect = (Button)v.findViewById(R.id.btnGoToScanLect);
         btnGoToAddClassLocation = (Button)v.findViewById(R.id.btnGoToClassLocation);
         btnGoToAddSubject = (Button)v.findViewById(R.id.btnGoToAddSubject);
         btnGoToUserClass = (Button)v.findViewById(R.id.btnGoToUserClass);
         btnMyQRCode = (Button)v.findViewById(R.id.btnMyQRCode);
         btnLogOut = (Button)v.findViewById(R.id.btnLogOut);
+
+        btnGoToScanLect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentHandler.stackFragment(new ScanLectFragment(),"ScanLect");
+            }
+        });
 
         btnGoToAddClassLocation.setOnClickListener(new View.OnClickListener() {
             @Override

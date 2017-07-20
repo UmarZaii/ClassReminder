@@ -23,18 +23,25 @@ public class DatabaseHandler {
     private String tblUser = "tblUser";
     private String tblUniversity = "tblUniversity";
     private String tblCourse = "tblCourse";
-    private String credentials = "credentials";
     private String userClassList = "userClassList";
-    private String courseAdmin = "courseAdmin";
 
-    public static String tblClassLocation = "tblClassLocation";
-    public static String tblUserClass = "tblUserClass";
-    public static String tblSubject = "tblSubject";
-    public static String courseID = "courseID";
-    public static String timeFrameDay = "timeFrameDay";
-    public static String timeFrameHour = "timeFrameHour";
+    public static final String tblClassLocation = "tblClassLocation";
+    public static final String tblUserClass = "tblUserClass";
+    public static final String tblSubject = "tblSubject";
 
-    public static String PSMZAID = "a2wx2pyFWJbRcOYWqkwwu7YwgRo2";
+    public static final String courseID = "courseID";
+    public static final String courseAdmin = "courseAdmin";
+    public static final String courseLecturer = "courseLecturer";
+    public static final String uniAdminDepartment = "uniAdminDepartment";
+    public static final String uniHeadDepartment = "uniHeadDepartment";
+    public static final String uniLecturer = "uniLecturer";
+    public static final String uniStudent = "uniStudent";
+    public static final String credentials = "credentials";
+
+    public static final String timeFrameDay = "timeFrameDay";
+    public static final String timeFrameHour = "timeFrameHour";
+
+    public static final String PSMZAID = "a2wx2pyFWJbRcOYWqkwwu7YwgRo2";
 
     public DatabaseHandler() {
         if (!isPersistenceEnabled) {
@@ -73,6 +80,10 @@ public class DatabaseHandler {
         return databaseReference.child(tblUser).child(userID).child(credentials);
     }
 
+    public DatabaseReference getTblUserCredentialsCourseID(String userID) {
+        return databaseReference.child(tblUser).child(userID).child(credentials).child(courseID);
+    }
+
     public DatabaseReference getTblUniversity(String uniID) {
         return databaseReference.child(tblUniversity).child(uniID);
     }
@@ -87,6 +98,10 @@ public class DatabaseHandler {
 
     public DatabaseReference getTblUniversityCourseAdmin(String uniID, String courseID) {
         return databaseReference.child(tblUniversity).child(uniID).child(tblCourse).child(courseID).child(courseAdmin);
+    }
+
+    public DatabaseReference getTblUniversityCourseLecturer(String uniID, String courseID) {
+        return databaseReference.child(tblUniversity).child(uniID).child(tblCourse).child(courseID).child(courseLecturer);
     }
 
     public DatabaseReference getTblUniversityCourseClassList(String uniID, String courseID) {

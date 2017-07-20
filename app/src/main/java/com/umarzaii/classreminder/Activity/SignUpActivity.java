@@ -98,7 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                     UserModel userModel = new UserModel(strUserIDReg,strUserEmailReg,strUserNameReg);
 
-                    dataMap.put(strUserIDReg, userModel.toMap());
+                    dataMap.put(strUserIDReg, userModel.detailsToMap());
                     databaseHandler.getTblUser().updateChildren(dataMap);
 
                     databaseHandler.getCurrentUser().sendEmailVerification();
