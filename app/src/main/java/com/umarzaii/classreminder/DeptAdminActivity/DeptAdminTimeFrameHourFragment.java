@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +21,7 @@ import com.umarzaii.classreminder.R;
 
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.PSMZAID;
 
-public class TimeFrameHourFragment extends Fragment {
+public class DeptAdminTimeFrameHourFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
@@ -34,7 +34,7 @@ public class TimeFrameHourFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_timeframehour,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_timeframehour,container,false);
         return view;
     }
 
@@ -72,7 +72,7 @@ public class TimeFrameHourFragment extends Fragment {
         FirebaseRecyclerAdapter<TimeFrameModel,TimeFrameHourViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<TimeFrameModel, TimeFrameHourViewHolder>(
 
                 TimeFrameModel.class,
-                R.layout.rvitem_timeframehourrow,
+                R.layout.handler_rvitem_timeframehourrow,
                 TimeFrameHourViewHolder.class,
                 dbClassPicker
 
@@ -113,7 +113,7 @@ public class TimeFrameHourFragment extends Fragment {
                             bundle.putString("displayType", databaseHandler.tblClassLocation);
                         }
 
-                        fragmentHandler.stackFragment(new AddTimeFrameFragment(),bundle,"AddTimeFrame");
+                        fragmentHandler.stackFragment(new DeptAdminAddTimeFrameFragment(),bundle,"AddTimeFrame");
                     }
                 });
 

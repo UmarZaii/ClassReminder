@@ -10,17 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activity.LaunchActivity">
+        <activity android:name=".GeneralActivity.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.SignUpActivity" />
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.ActivationActivity" />
-        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".GeneralActivity.SignUpActivity" />
+        <activity android:name=".GeneralActivity.LoginActivity" />
+        <activity android:name=".GeneralActivity.ActivationActivity" />
+        <activity android:name=".GeneralActivity.CredentialsCheckActivity" />
+        <activity android:name=".GeneralActivity.QRCodeActivity" />
+        <activity android:name=".DeptAdminActivity.DeptAdminMainActivity" />
 
     </application>
 

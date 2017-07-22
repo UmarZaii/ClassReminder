@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Activity;
+package com.umarzaii.classreminder.GeneralActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -35,7 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.general_activity_signup);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);

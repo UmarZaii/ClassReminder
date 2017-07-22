@@ -23,6 +23,7 @@ public class DatabaseHandler {
     private String tblUser = "tblUser";
     private String tblUniversity = "tblUniversity";
     private String tblCourse = "tblCourse";
+    private String userRole = "userRole";
     private String userClassList = "userClassList";
 
     public static final String tblClassLocation = "tblClassLocation";
@@ -82,6 +83,10 @@ public class DatabaseHandler {
 
     public DatabaseReference getTblUserCredentialsCourseID(String userID) {
         return databaseReference.child(tblUser).child(userID).child(credentials).child(courseID);
+    }
+
+    public DatabaseReference getTblUserCredentialsUserRole(String userID) {
+        return databaseReference.child(tblUser).child(userID).child(credentials).child(userRole);
     }
 
     public DatabaseReference getTblUniversity(String uniID) {

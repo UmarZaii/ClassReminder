@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Activity;
+package com.umarzaii.classreminder.GeneralActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,8 +15,20 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+import com.umarzaii.classreminder.DeptAdminActivity.DeptAdminMainActivity;
 import com.umarzaii.classreminder.Handler.DatabaseHandler;
 import com.umarzaii.classreminder.R;
+
+import java.util.concurrent.Semaphore;
+
+import static com.umarzaii.classreminder.Handler.DatabaseHandler.credentials;
+import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniAdminDepartment;
+import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniHeadDepartment;
+import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniLecturer;
+import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniStudent;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.general_activity_login);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
@@ -65,6 +77,25 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void checkUserCredentials(final String userID) {
+        databaseHandler.getTblUser(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(credentials)) {
+                    getUserRole(databaseHandler.getUserID());
+                } else {
+                    startActivity(new Intent(LoginActivity.this, CredentialsCheckActivity.class));
+                    progressDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private boolean inputCheck() {
 
         if(TextUtils.isEmpty(strUserEmail) || strUserEmail == null) {
@@ -87,21 +118,46 @@ public class LoginActivity extends AppCompatActivity {
         databaseHandler.getFirebaseAuth().signInWithEmailAndPassword(strUserEmail,strUserPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
                 if(!task.isSuccessful()) {
                     progressDialog.dismiss();
                     Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                     Log.d("Error", task.getException().toString());
-                } else if (databaseHandler.getCurrentUser().isEmailVerified()) {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    finish();
-                    progressDialog.dismiss();
-                } else {
+                } else if (!databaseHandler.getCurrentUser().isEmailVerified()) {
                     Intent intent = new Intent(LoginActivity.this, ActivationActivity.class);
                     intent.putExtra("userEmail", strUserEmail);
                     intent.putExtra("userPass", strUserPass);
                     startActivity(intent);
                     progressDialog.dismiss();
+                } else {
+                    checkUserCredentials(databaseHandler.getUserID());
                 }
+            }
+        });
+
+    }
+
+    private void getUserRole(final String userID) {
+
+        databaseHandler.getTblUserCredentialsUserRole(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(uniAdminDepartment)) {
+                    startActivity(new Intent(LoginActivity.this, DeptAdminMainActivity.class));
+                    finish();
+                    progressDialog.dismiss();
+                } else if (dataSnapshot.hasChild(uniHeadDepartment)) {
+                    Toast.makeText(LoginActivity.this, "UNIHEAD Not Available", Toast.LENGTH_SHORT).show();
+                } else if (dataSnapshot.hasChild(uniLecturer)) {
+                    Toast.makeText(LoginActivity.this, "UNILECT Not Available", Toast.LENGTH_SHORT).show();
+                } else if (dataSnapshot.hasChild(uniStudent)) {
+                    Toast.makeText(LoginActivity.this, "UNISTUDENT Not Available", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 

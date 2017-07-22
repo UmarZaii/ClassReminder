@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +31,7 @@ import static com.umarzaii.classreminder.Handler.DatabaseHandler.courseLecturer;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.credentials;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniLecturer;
 
-public class ScanLectFragment extends Fragment {
+public class DeptAdminScanLectFragment extends Fragment {
 
     private FragmentHandler fragmentHandler;
     private DatabaseHandler databaseHandler;
@@ -48,7 +48,7 @@ public class ScanLectFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_scanlect,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_scanlect,container,false);
         return view;
     }
 

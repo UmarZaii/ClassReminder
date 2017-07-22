@@ -1,9 +1,8 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +10,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,14 +25,12 @@ import com.umarzaii.classreminder.Model.TimeFrameModel;
 import com.umarzaii.classreminder.Model.UserClassModel;
 import com.umarzaii.classreminder.R;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.PSMZAID;
 
-public class AddTimeFrameFragment extends Fragment {
+public class DeptAdminAddTimeFrameFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
@@ -71,7 +65,7 @@ public class AddTimeFrameFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_timeframeadd,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_timeframeadd,container,false);
         return view;
     }
 

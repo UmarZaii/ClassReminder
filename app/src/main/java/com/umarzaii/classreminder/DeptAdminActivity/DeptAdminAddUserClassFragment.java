@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,7 +26,7 @@ import java.util.Map;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.PSMZAID;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.courseID;
 
-public class AddUserClassFragment extends Fragment {
+public class DeptAdminAddUserClassFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
@@ -39,7 +39,7 @@ public class AddUserClassFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_adduserclass,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_adduserclass,container,false);
         return view;
     }
 

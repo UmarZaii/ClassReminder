@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,13 +17,12 @@ import com.umarzaii.classreminder.Model.ClassLocationModel;
 import com.umarzaii.classreminder.Model.TimeFrameModel;
 import com.umarzaii.classreminder.R;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.PSMZAID;
 
-public class AddClassLocationFragment extends Fragment {
+public class DeptAdminAddClassLocationFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
@@ -36,7 +35,7 @@ public class AddClassLocationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_addclasslocation,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_addclasslocation,container,false);
         return view;
     }
 

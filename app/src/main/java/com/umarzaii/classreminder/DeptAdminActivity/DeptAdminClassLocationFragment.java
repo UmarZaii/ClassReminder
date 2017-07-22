@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,7 +21,7 @@ import com.umarzaii.classreminder.R;
 
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.PSMZAID;
 
-public class ClassLocationFragment extends Fragment {
+public class DeptAdminClassLocationFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
@@ -32,7 +32,7 @@ public class ClassLocationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_classlocation,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_classlocation,container,false);
         return view;
     }
 
@@ -56,7 +56,7 @@ public class ClassLocationFragment extends Fragment {
         btnGoToAddClassLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new AddClassLocationFragment(),"AddClassLocation");
+                fragmentHandler.stackFragment(new DeptAdminAddClassLocationFragment(),"AddClassLocation");
             }
         });
     }
@@ -68,7 +68,7 @@ public class ClassLocationFragment extends Fragment {
         FirebaseRecyclerAdapter<ClassLocationModel,ClassLocationViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ClassLocationModel, ClassLocationViewHolder>(
 
                 ClassLocationModel.class,
-                R.layout.rvitem_classlocationrow,
+                R.layout.handler_rvitem_classlocationrow,
                 ClassLocationViewHolder.class,
                 databaseHandler.getTblUniversityClassLocation(PSMZAID)
 
@@ -86,7 +86,7 @@ public class ClassLocationFragment extends Fragment {
                         bundle.putString("classLocationID", classLocationID);
                         bundle.putString("displayType", databaseHandler.tblClassLocation);
 
-                        fragmentHandler.stackFragment(new TimeFrameDayFragment(),bundle,"TimeFrameDay");
+                        fragmentHandler.stackFragment(new DeptAdminTimeFrameDayFragment(),bundle,"TimeFrameDay");
                     }
                 });
 

@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.umarzaii.classreminder.Activity.LoginActivity;
+import com.umarzaii.classreminder.GeneralActivity.LoginActivity;
 import com.umarzaii.classreminder.Handler.DatabaseHandler;
 import com.umarzaii.classreminder.Handler.FragmentHandler;
 import com.umarzaii.classreminder.R;
 
-public class MainFragment extends Fragment {
+public class DeptAdminMainFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
@@ -29,7 +29,7 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_main,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_main,container,false);
         return view;
     }
 
@@ -52,35 +52,35 @@ public class MainFragment extends Fragment {
         btnGoToScanLect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new ScanLectFragment(),"ScanLect");
+                fragmentHandler.stackFragment(new DeptAdminScanLectFragment(),"ScanLect");
             }
         });
 
         btnGoToAddClassLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new ClassLocationFragment(),"ClassLocation");
+                fragmentHandler.stackFragment(new DeptAdminClassLocationFragment(),"ClassLocation");
             }
         });
 
         btnGoToAddSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new AddSubjectFragment(),"AddSubject");
+                fragmentHandler.stackFragment(new DeptAdminAddSubjectFragment(),"AddSubject");
             }
         });
 
         btnGoToUserClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new UserClassFragment(),"UserClass");
+                fragmentHandler.stackFragment(new DeptAdminUserClassFragment(),"UserClass");
             }
         });
 
         btnMyQRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new MyQRCodeFragment(),"MyQRCode");
+                fragmentHandler.stackFragment(new DeptAdminMyQRCodeFragment(),"MyQRCode");
             }
         });
 

@@ -1,4 +1,4 @@
-package com.umarzaii.classreminder.Fragment;
+package com.umarzaii.classreminder.DeptAdminActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ import com.umarzaii.classreminder.R;
 
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.PSMZAID;
 
-public class UserClassFragment extends Fragment {
+public class DeptAdminUserClassFragment extends Fragment {
 
     private DatabaseHandler databaseHandler;
     private FragmentHandler fragmentHandler;
@@ -33,7 +32,7 @@ public class UserClassFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragm_userclass,container,false);
+        View view = inflater.inflate(R.layout.deptadmin_fragm_userclass,container,false);
         return view;
     }
 
@@ -57,7 +56,7 @@ public class UserClassFragment extends Fragment {
         btnGoToAddUserClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new AddUserClassFragment(),"AddUserClass");
+                fragmentHandler.stackFragment(new DeptAdminAddUserClassFragment(),"AddUserClass");
             }
         });
     }
@@ -69,7 +68,7 @@ public class UserClassFragment extends Fragment {
         FirebaseRecyclerAdapter<UserClassModel,UserClassViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<UserClassModel, UserClassViewHolder>(
 
                 UserClassModel.class,
-                R.layout.rvitem_userclassrow,
+                R.layout.handler_rvitem_userclassrow,
                 UserClassViewHolder.class,
                 databaseHandler.getTblUniversityUserClass(PSMZAID)
 
@@ -88,7 +87,7 @@ public class UserClassFragment extends Fragment {
                         bundle.putString("userClassID", userClassID);
                         bundle.putString("displayType", databaseHandler.tblUserClass);
 
-                        fragmentHandler.stackFragment(new TimeFrameDayFragment(),bundle,"TimeFrameDay");
+                        fragmentHandler.stackFragment(new DeptAdminTimeFrameDayFragment(),bundle,"TimeFrameDay");
                     }
                 });
 
