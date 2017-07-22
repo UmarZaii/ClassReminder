@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.umarzaii.classreminder.DeptAdminActivity.DeptAdminMainActivity;
 import com.umarzaii.classreminder.Handler.DatabaseHandler;
 import com.umarzaii.classreminder.R;
+import com.umarzaii.classreminder.StudentActivity.StudentMainActivity;
 
 import java.util.concurrent.Semaphore;
 
@@ -151,7 +152,9 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (dataSnapshot.hasChild(uniLecturer)) {
                     Toast.makeText(LoginActivity.this, "UNILECT Not Available", Toast.LENGTH_SHORT).show();
                 } else if (dataSnapshot.hasChild(uniStudent)) {
-                    Toast.makeText(LoginActivity.this, "UNISTUDENT Not Available", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, StudentMainActivity.class));
+                    finish();
+                    progressDialog.dismiss();
                 }
             }
 

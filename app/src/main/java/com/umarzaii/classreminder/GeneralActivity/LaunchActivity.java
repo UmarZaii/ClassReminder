@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.umarzaii.classreminder.DeptAdminActivity.DeptAdminMainActivity;
 import com.umarzaii.classreminder.Handler.DatabaseHandler;
 import com.umarzaii.classreminder.R;
+import com.umarzaii.classreminder.StudentActivity.StudentMainActivity;
 
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.credentials;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniAdminDepartment;
@@ -107,7 +108,8 @@ public class LaunchActivity extends AppCompatActivity {
                 } else if (dataSnapshot.hasChild(uniLecturer)) {
                     Toast.makeText(LaunchActivity.this, "UNILECT", Toast.LENGTH_SHORT).show();
                 } else if (dataSnapshot.hasChild(uniStudent)) {
-                    Toast.makeText(LaunchActivity.this, "UNISTUDENT", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LaunchActivity.this, StudentMainActivity.class));
+                    finish();
                 }
             }
 

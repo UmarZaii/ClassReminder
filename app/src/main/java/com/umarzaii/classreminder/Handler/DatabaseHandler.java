@@ -33,11 +33,14 @@ public class DatabaseHandler {
     public static final String courseID = "courseID";
     public static final String courseAdmin = "courseAdmin";
     public static final String courseLecturer = "courseLecturer";
+
     public static final String uniAdminDepartment = "uniAdminDepartment";
     public static final String uniHeadDepartment = "uniHeadDepartment";
     public static final String uniLecturer = "uniLecturer";
     public static final String uniStudent = "uniStudent";
+
     public static final String credentials = "credentials";
+    public static final String studentList = "studentList";
 
     public static final String timeFrameDay = "timeFrameDay";
     public static final String timeFrameHour = "timeFrameHour";

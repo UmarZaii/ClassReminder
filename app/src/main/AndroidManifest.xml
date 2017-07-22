@@ -21,8 +21,10 @@
         <activity android:name=".GeneralActivity.LoginActivity" />
         <activity android:name=".GeneralActivity.ActivationActivity" />
         <activity android:name=".GeneralActivity.CredentialsCheckActivity" />
+        <activity android:name=".GeneralActivity.CredentialsAddActivity" />
         <activity android:name=".GeneralActivity.QRCodeActivity" />
         <activity android:name=".DeptAdminActivity.DeptAdminMainActivity" />
+        <activity android:name=".StudentActivity.StudentMainActivity" />
 
     </application>
 

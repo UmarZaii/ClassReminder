@@ -19,8 +19,10 @@ public class UserModel {
 
     public String uniID;
     public String userType;
+    public String studentID;
     public String employeeID;
     public String courseID;
+    public String userClassID;
 
     public UserModel() {
 
@@ -38,6 +40,15 @@ public class UserModel {
         this.userType = userType;
         this.employeeID = employeeID;
         this.courseID = courseID;
+    }
+
+    public UserModel(String userID, String uniID, String userType, String studentID, String courseID, String userClassID) {
+        this.userID = userID;
+        this.uniID = uniID;
+        this.userType = userType;
+        this.studentID = studentID;
+        this.courseID = courseID;
+        this.userClassID = userClassID;
     }
 
     @Exclude
@@ -62,12 +73,24 @@ public class UserModel {
     }
 
     @Exclude
-    public Map<String, Object> credentialsToMap() {
+    public Map<String, Object> credentialsEmployeeToMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uniID", uniID);
         result.put("userRole", userRoleToMap(userType));
         result.put("employeeID", employeeID);
         result.put("courseID", courseID);
+
+        return result;
+    }
+
+    @Exclude
+    public Map<String, Object> credentialsStudentToMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("uniID", uniID);
+        result.put("userRole", userRoleToMap(userType));
+        result.put("studentID", studentID);
+        result.put("courseID", courseID);
+        result.put("userClassID", userClassID);
 
         return result;
     }

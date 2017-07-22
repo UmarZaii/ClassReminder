@@ -187,7 +187,7 @@ public class DeptAdminScanLectFragment extends Fragment {
 
         UserModel userModel = new UserModel(strUserID,PSMZAID,uniLecturer,strEmployeeID,strCourseID);
 
-        dataMapUser.put(credentials, userModel.credentialsToMap());
+        dataMapUser.put(credentials, userModel.credentialsEmployeeToMap());
         databaseHandler.getTblUser(strUserID).updateChildren(dataMapUser);
 
         dataMapCourseLect.put(courseLecturer, userModel.userIDToMap());
