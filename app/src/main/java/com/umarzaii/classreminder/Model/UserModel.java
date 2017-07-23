@@ -9,6 +9,7 @@ import java.util.Map;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniAdminDepartment;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniHeadDepartment;
 import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniLecturer;
+import static com.umarzaii.classreminder.Handler.DatabaseHandler.uniStudent;
 
 @IgnoreExtraProperties
 public class UserModel {
@@ -121,7 +122,8 @@ public class UserModel {
 
         } else {
 
-            //student
+            userRoleMap.put("userType", uniStudent);
+            result.put(uniStudent, userRoleMap);
 
         }
 

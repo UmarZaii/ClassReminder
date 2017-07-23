@@ -112,10 +112,6 @@ public class CredentialsAddActivity extends AppCompatActivity {
         userClassIDList = new ArrayList<String>();
 
         for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-            UserClassModel userClassModel = postSnapshot.getValue(UserClassModel.class);
-            String userClassID = userClassModel.userClassID;
-            userClassIDList.add(userClassID);
-
             CourseModel courseModel = postSnapshot.getValue(CourseModel.class);
             String courseID = courseModel.courseID;
             courseIDList.add(courseID);
@@ -127,7 +123,7 @@ public class CredentialsAddActivity extends AppCompatActivity {
     }
 
     private void getUserClassIDList() {
-        databaseHandler.getTblUniversityCourse(PSMZAID).addValueEventListener(new ValueEventListener() {
+        databaseHandler.getTblUniversityUserClass(PSMZAID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (boolUserClassID) {
