@@ -150,7 +150,10 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (dataSnapshot.hasChild(uniHeadDepartment)) {
                     Toast.makeText(LoginActivity.this, "UNIHEAD Not Available", Toast.LENGTH_SHORT).show();
                 } else if (dataSnapshot.hasChild(uniLecturer)) {
-                    Toast.makeText(LoginActivity.this, "UNILECT Not Available", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, DeptAdminMainActivity.class));
+                    finish();
+                    progressDialog.dismiss();
+                    //change activity
                 } else if (dataSnapshot.hasChild(uniStudent)) {
                     startActivity(new Intent(LoginActivity.this, StudentMainActivity.class));
                     finish();

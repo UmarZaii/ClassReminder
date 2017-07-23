@@ -106,7 +106,9 @@ public class LaunchActivity extends AppCompatActivity {
                 } else if (dataSnapshot.hasChild(uniHeadDepartment)) {
                     Toast.makeText(LaunchActivity.this, "UNIHEAD", Toast.LENGTH_SHORT).show();
                 } else if (dataSnapshot.hasChild(uniLecturer)) {
-                    Toast.makeText(LaunchActivity.this, "UNILECT", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LaunchActivity.this, DeptAdminMainActivity.class));
+                    finish();
+                    //change activity
                 } else if (dataSnapshot.hasChild(uniStudent)) {
                     startActivity(new Intent(LaunchActivity.this, StudentMainActivity.class));
                     finish();

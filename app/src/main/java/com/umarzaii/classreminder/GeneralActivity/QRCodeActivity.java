@@ -77,12 +77,6 @@ public class QRCodeActivity extends AppCompatActivity {
         databaseHandler.getTblUserCredentialsUserRole(userID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.hasChild(uniAdminDepartment)) {
-//                    Intent intent = new Intent(getApplicationContext(), DeptAdminMainActivity.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    startActivity(intent);
-//                    finish();
-//                } else
                 if (dataSnapshot.hasChild(uniHeadDepartment)) {
 
                 } else if (dataSnapshot.hasChild(uniLecturer)) {
@@ -90,6 +84,7 @@ public class QRCodeActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
+                    //change activity
                 }
             }
 
