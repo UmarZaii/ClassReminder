@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.umarzaii.classreminder.DeptAdminActivity.DeptAdminAddSubjectFragment;
 import com.umarzaii.classreminder.DeptAdminActivity.DeptAdminClassLocationFragment;
 import com.umarzaii.classreminder.DeptAdminActivity.DeptAdminMyQRCodeFragment;
@@ -27,6 +30,8 @@ public class StudentMainFragment extends Fragment {
     private Button btnLogOut;
     private Button btnMyQRCode;
     private Button btnTimeTable;
+
+    private String strUserClassID;
 
     @Nullable
     @Override
@@ -48,10 +53,15 @@ public class StudentMainFragment extends Fragment {
         btnMyQRCode = (Button)v.findViewById(R.id.btnMyQRCode);
         btnLogOut = (Button)v.findViewById(R.id.btnLogOut);
 
+        getUserClassID();
+
         btnTimeTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentHandler.stackFragment(new StudentTimeFrameDayFragment(),"TimeFrameDay");
+                Bundle bundle = new Bundle();
+                bundle.putString("userClassID", strUserClassID);
+
+                fragmentHandler.stackFragment(new StudentTimeFrameDayFragment(),bundle,"TimeFrameDay");
             }
         });
 
@@ -68,6 +78,22 @@ public class StudentMainFragment extends Fragment {
                 databaseHandler.getFirebaseAuth().signOut();
                 getActivity().finish();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
+        });
+    }
+
+    private void getUserClassID() {
+        String userID = databaseHandler.getUserID();
+
+        databaseHandler.getTblUserCredentialsUserClassID(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                strUserClassID = dataSnapshot.getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }
