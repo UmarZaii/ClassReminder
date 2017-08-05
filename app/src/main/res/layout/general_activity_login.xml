@@ -9,56 +9,87 @@
     <include
         layout="@layout/deptadmin_toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="@color/colorPrimary">
 
-    <EditText
-        android:id="@+id/edtUserEmailLogin"
-        android:ems="15"
-        android:hint="Email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="122dp" />
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:src="@drawable/schedule"
+                android:layout_gravity="center"
+                android:layout_width="125dp"
+                android:layout_height="125dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="CLASS REMINDER"
+                android:textColor="#fff"
+                android:textSize="25sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="JTMK"
+                android:textColor="#fff"
+                android:textSize="25sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/edtUserEmailLogin"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="center"
+                android:hint="Email"
+                android:padding="10dp"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/edtUserPassLogin"
+                android:drawableStart="@drawable/ic_https_black_24dp"
+                android:drawableLeft="@drawable/ic_https_black_24dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnLogin"
+                android:textColor="#fff"
+                android:background="@color/colorPrimary"
+                android:text="LOGIN"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/edtUserPassLogin"
-        android:ems="15"
-        android:hint="Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:inputType="textPassword"
-        android:layout_below="@+id/edtUserEmailLogin"
-        android:layout_centerHorizontal="true" />
+            <Button
+                android:id="@+id/btnGoToSignUp"
+                android:textColor="#fff"
+                android:background="@color/colorPrimary"
+                android:text="SIGN UP"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_width="380dp"
+                android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="33dp"
-        android:text="LOGIN"
-        android:layout_below="@+id/edtUserPassLogin"
-        android:layout_centerHorizontal="true" />
+        </LinearLayout>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btnTEST"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:text="TEST"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignLeft="@+id/btnLogin"
-        android:layout_alignStart="@+id/btnLogin" />
-
-    <Button
-        android:id="@+id/btnGoToSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        android:layout_marginTop="76dp"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignLeft="@+id/btnLogin"
-        android:layout_alignStart="@+id/btnLogin" />
 
 </RelativeLayout>
