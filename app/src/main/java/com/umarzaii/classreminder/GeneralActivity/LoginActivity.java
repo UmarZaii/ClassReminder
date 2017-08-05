@@ -24,7 +24,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.umarzaii.classreminder.DeptAdminActivity.DeptAdminMainActivity;
+import com.umarzaii.classreminder.DeptHeadActivity.DeptHeadMainActivity;
 import com.umarzaii.classreminder.Handler.DatabaseHandler;
+import com.umarzaii.classreminder.LecturerActivity.LecturerMainActivity;
 import com.umarzaii.classreminder.R;
 import com.umarzaii.classreminder.StudentActivity.StudentMainActivity;
 
@@ -153,12 +155,13 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     progressDialog.dismiss();
                 } else if (dataSnapshot.hasChild(uniHeadDepartment)) {
-                    Toast.makeText(LoginActivity.this, "UNIHEAD Not Available", Toast.LENGTH_SHORT).show();
-                } else if (dataSnapshot.hasChild(uniLecturer)) {
-                    startActivity(new Intent(LoginActivity.this, DeptAdminMainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, DeptHeadMainActivity.class));
                     finish();
                     progressDialog.dismiss();
-                    //change activity
+                } else if (dataSnapshot.hasChild(uniLecturer)) {
+                    startActivity(new Intent(LoginActivity.this, LecturerMainActivity.class));
+                    finish();
+                    progressDialog.dismiss();
                 } else if (dataSnapshot.hasChild(uniStudent)) {
                     startActivity(new Intent(LoginActivity.this, StudentMainActivity.class));
                     finish();

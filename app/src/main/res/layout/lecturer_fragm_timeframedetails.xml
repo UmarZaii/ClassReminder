@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtUserClassID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="81dp"
+        android:text="UserClass"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/txtDayIDPath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:text="DayID Path"
+        android:layout_below="@+id/txtUserClassID"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/txtTimeFrameHourID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="TimeFrame Hour"
+        android:layout_below="@+id/txtDayIDPath"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/txtSubjectIDInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:text="Subject ID"
+        android:layout_below="@+id/txtTimeFrameHourID"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/txtClassLocationID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="ClassLocation"
+        android:layout_below="@+id/txtSubjectIDInfo"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
