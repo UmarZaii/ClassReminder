@@ -30,6 +30,7 @@ public class DeptAdminAddClassLocationFragment extends Fragment {
     private EditText edtClassLocationID;
     private Button btnAddClassLocation;
 
+
     private String strClassLocationID;
 
     @Nullable

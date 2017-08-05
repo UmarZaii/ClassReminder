@@ -1,5 +1,7 @@
 package com.umarzaii.classreminder.Model;
 
+import android.util.Log;
+
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -54,11 +56,8 @@ public class UserModel {
 
     @Exclude
     public Map<String, Object> userIDToMap() {
-        HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("userID", userID);
-
         HashMap<String, Object> result = new HashMap<>();
-        result.put(userID, userMap);
+        result.put("userID", userID);
 
         return result;
     }
@@ -77,7 +76,7 @@ public class UserModel {
     public Map<String, Object> credentialsEmployeeToMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uniID", uniID);
-        result.put("userRole", userRoleToMap(userType));
+        result.put("userRole", userRoleToMap());
         result.put("employeeID", employeeID);
         result.put("courseID", courseID);
 
@@ -88,7 +87,7 @@ public class UserModel {
     public Map<String, Object> credentialsStudentToMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uniID", uniID);
-        result.put("userRole", userRoleToMap(userType));
+        result.put("userRole", userRoleToMap());
         result.put("studentID", studentID);
         result.put("courseID", courseID);
         result.put("userClassID", userClassID);
@@ -97,25 +96,25 @@ public class UserModel {
     }
 
     @Exclude
-    public Map<String, Object> userRoleToMap(String userRole) {
+    private Map<String, Object> userRoleToMap() {
         HashMap<String, Object> userRoleMap = new HashMap<>();
         HashMap<String, Object> result = new HashMap<>();
 
-        if (userRole.equals(uniAdminDepartment)) {
+        if (userType.equals(uniAdminDepartment)) {
 
             userRoleMap.put("userType", uniAdminDepartment);
             result.put(uniAdminDepartment, userRoleMap);
             userRoleMap.put("userType", uniLecturer);
             result.put(uniLecturer, userRoleMap);
 
-        } else if (userRole.equals(uniHeadDepartment)) {
+        } else if (userType.equals(uniHeadDepartment)) {
 
             userRoleMap.put("userType", uniHeadDepartment);
             result.put(uniHeadDepartment, userRoleMap);
             userRoleMap.put("userType", uniLecturer);
             result.put(uniLecturer, userRoleMap);
 
-        } else if (userRole.equals(uniLecturer)) {
+        } else if (userType.equals(uniLecturer)) {
 
             userRoleMap.put("userType", uniLecturer);
             result.put(uniLecturer, userRoleMap);
