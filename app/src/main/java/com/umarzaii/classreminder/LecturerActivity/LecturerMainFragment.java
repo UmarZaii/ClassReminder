@@ -38,7 +38,7 @@ public class LecturerMainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getActivity().setTitle("Main Fragment");
+        getActivity().setTitle("LECTURER");
         View v = getView();
 
         databaseHandler = new DatabaseHandler();

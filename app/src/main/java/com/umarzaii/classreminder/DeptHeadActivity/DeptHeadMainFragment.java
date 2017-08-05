@@ -38,7 +38,7 @@ public class DeptHeadMainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getActivity().setTitle("Main Fragment");
+        getActivity().setTitle("DEPT HEAD");
         View v = getView();
 
         databaseHandler = new DatabaseHandler();
