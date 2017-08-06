@@ -159,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                     progressDialog.dismiss();
                 } else if (dataSnapshot.hasChild(uniLecturer)) {
-                    startActivity(new Intent(LoginActivity.this, DeptAdminMainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, LecturerMainActivity.class));
                     finish();
                     progressDialog.dismiss();
                 } else if (dataSnapshot.hasChild(uniStudent)) {
